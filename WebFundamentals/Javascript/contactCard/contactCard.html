@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Contact Card</title>
+        <link rel="stylesheet" type="text/css" href="contactCard.css">
+        <script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script>
+          $(document).ready(function(){
+            $(document).on('click', '#enterButton', (function(){
+              console.log('testing');
+              var first_name_entry = $('#first_name').val();
+              var last_name_entry = $('#last_name').val();
+              var description_entry = $('#description').val();
+              $('#stored_contacts').append("<h2>" + first_name_entry + " " + last_name_entry + "<span>Click for description!</span></h2>" );
+            }))
+            $('form').submit(function(){
+              return false;
+            });
+            $(document).on('click', 'h2', function(){
+              console.log('also testing');
+              var description_entry = $('#description').val();
+              $(this).html("<p>" + description_entry + "</p>")
+            })
+          });
+        </script>
+    </head>
+    <body>
+      <div id="wrapper">
+        <div id="form_area">
+          <form>
+            <p>First Name:</p><input id="first_name" type="text" label="First Name"></input>
+            <p>Last Name:</p><input id="last_name" type="text" label="Last Name"></input>
+            <p>Description:</p><textarea id="description" label="Description">Enter description</textarea>
+            <input id="enterButton" type="submit" label="Log details"></input>
+        </div>
+        <div id="stored_contacts">
+        </div>
+      </div>
+    </body>
+</html>
